@@ -7,6 +7,7 @@ import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/s
 import { AppSidebar } from "@/components/app-sidebar";
 import { Separator } from "@/components/ui/separator";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { WeatherTool } from "@/components/assistant-ui/tool-weather";
 
 export const Assistant = () => {
   const runtime = useChatRuntime({
@@ -37,6 +38,7 @@ export const Assistant = () => {
               </BreadcrumbList>
             </Breadcrumb>
           </header>
+          <WeatherTool />
           <Thread />
         </SidebarInset>
       </SidebarProvider>

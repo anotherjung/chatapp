@@ -6,7 +6,7 @@ import {
   MessagePrimitive,
   ThreadPrimitive,
 } from "@assistant-ui/react";
-import type { FC } from "react";
+import type { FC, PropsWithChildren } from "react";
 import {
   ArrowDownIcon,
   CheckIcon,
@@ -22,6 +22,8 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { MarkdownText } from "@/components/assistant-ui/markdown-text";
 import { TooltipIconButton } from "@/components/assistant-ui/tooltip-icon-button";
+import { ToolFallback } from "@/components/assistant-ui/tool-fallback";
+
 
 export const Thread: FC = () => {
   return (
@@ -201,11 +203,35 @@ const EditComposer: FC = () => {
   );
 };
 
+const ToolGroup: FC<
+  PropsWithChildren<{ startIndex: number; endIndex: number }>
+> = ({ startIndex, endIndex, children }) => {
+  return (
+    <div className="bg-muted/50 my-2 rounded-lg border p-4">
+      <div className="text-muted-foreground mb-2 text-sm">
+        Tool execution #{startIndex + 1}-{endIndex + 1}
+      </div>
+      <div className="space-y-2">{children}</div>
+    </div>
+  );
+};
+
+
+
 const AssistantMessage: FC = () => {
   return (
     <MessagePrimitive.Root className="grid grid-cols-[auto_auto_1fr] grid-rows-[auto_1fr] relative w-full max-w-[var(--thread-max-width)] py-4">
       <div className="text-foreground max-w-[calc(var(--thread-max-width)*0.8)] break-words leading-7 col-span-2 col-start-2 row-start-1 my-1.5">
         <MessagePrimitive.Parts components={{ Text: MarkdownText }} />
+       
+
+       <MessagePrimitive.Parts
+          components={{ tools: { Fallback: ToolFallback } }}
+        />
+
+<MessagePrimitive.Parts components={{ ToolGroup }} />
+
+
         <MessageError />
       </div>
 
@@ -293,3 +319,6 @@ const CircleStopIcon = () => {
     </svg>
   );
 };
+
+
+
