@@ -9,7 +9,7 @@ This is an enhanced [assistant-ui](https://github.com/Yonom/assistant-ui) starte
 ### Prerequisites
 
 - Node.js 18+ and npm
-- OpenAI API key (for AI model access)
+- Google Generative AI API key (for Gemini model access)
 
 ### Setup
 
@@ -20,10 +20,10 @@ cd chatapp
 npm install
 ```
 
-2. **Add your OpenAI API key** to `.env.local` file:
+2. **Add your Google Generative AI API key** to `.env.local` file:
 
 ```
-OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+GOOGLE_GENERATIVE_AI_API_KEY=your_google_api_key_here
 ```
 
 3. **Run the development server:**
@@ -58,6 +58,9 @@ A comprehensive weather tool has been added as a reference implementation for cr
 - **Complete documentation** with git diff-style insertion guides
 
 **Files Added/Modified:**
+- [`app/api/chat/route.ts`](app/api/chat/route.ts) - Tool registration and API integration
+- [`app/assistant.tsx`](app/assistant.tsx) - Main chat interface updates
+- [`components/assistant-ui/thread.tsx`](components/assistant-ui/thread.tsx) - Message handling enhancements
 - [`components/assistant-ui/tool-weather.tsx`](components/assistant-ui/tool-weather.tsx) - Complete weather tool implementation
 - [`docs/specs/weather-tools-ui.md`](docs/specs/weather-tools-ui.md) - Comprehensive implementation guide
 
@@ -112,7 +115,7 @@ To add new locations or features:
 - **Styling**: Tailwind CSS with shadcn/ui
 - **Type Safety**: TypeScript with strict configuration
 - **Validation**: Zod schemas for tool parameters
-- **AI Integration**: AI SDK with Google Gemini
+- **AI Integration**: AI SDK with Google Gemini 2.0 Flash
 
 ## For Future Developers
 
