@@ -14,23 +14,24 @@ export async function POST(req: Request) {
   const { messages, system, tools } = await req.json();
 
   const result = streamText({
-    model: google("gemini-2.0-flash"),
-    //model: ollama("qwen3:4b"),
+    //model: google("gemini-2.0-flash"),
+    model: ollama("llama3.2:3b"),
     messages,
     // forward system prompt and tools from the frontend
     toolCallStreaming: true,
     system,
     tools: {
       ...frontendTools(tools),
-      weather: {
-        description: "Get weather information",
-        parameters: z.object({
-          location: z.string().describe("Location to get weather for"),
-        }),
-        execute: async ({ location }) => {
-          return `The weather in ${location} is sunny.`;
-        },
-      },
+      // ollama doesn't render
+      // weather: {
+      //   description: "Get weather information",
+      //   parameters: z.object({
+      //     location: z.string().describe("Location to get weather for"),
+      //   }),
+      //   execute: async ({ location }) => {
+      //     return `The weather in ${location} is sunny.`;
+      //   },
+      // },
     },
     onError: console.log,
   });

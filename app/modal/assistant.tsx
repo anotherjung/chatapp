@@ -7,6 +7,7 @@ import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/s
 import { AppSidebar } from "@/components/app-sidebar";
 import { Separator } from "@/components/ui/separator";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { AssistantModal } from "@/components/assistant-ui/assistant-modal";
 
 export const Assistant = () => {
   const runtime = useChatRuntime({
@@ -37,7 +38,7 @@ export const Assistant = () => {
               </BreadcrumbList>
             </Breadcrumb>
           </header>
-          <Thread />
+      <AssistantModal />
         </SidebarInset>
       </SidebarProvider>
     </AssistantRuntimeProvider>

@@ -2,11 +2,14 @@
 
 import { AssistantRuntimeProvider } from "@assistant-ui/react";
 import { useChatRuntime } from "@assistant-ui/react-ai-sdk";
-import { Thread } from "@/components/assistant-ui/thread";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Separator } from "@/components/ui/separator";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { AssistantModal } from "@/components/assistant-ui/assistant-modal";
+
+import { AssistantSidebar } from "@/components/assistant-ui/assistant-sidebar";
+
 
 export const Assistant = () => {
   const runtime = useChatRuntime({
@@ -37,9 +40,9 @@ export const Assistant = () => {
               </BreadcrumbList>
             </Breadcrumb>
           </header>
-          <Thread />
+          <AssistantSidebar>{/* your app */}</AssistantSidebar>
         </SidebarInset>
-      </SidebarProvider>
+      </SidebarProvider>  
     </AssistantRuntimeProvider>
   );
 };
