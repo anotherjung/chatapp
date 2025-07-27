@@ -38,6 +38,7 @@ export const Assistant = () => {
             </Breadcrumb>
           </header>
           <Thread />
+      
         </SidebarInset>
       </SidebarProvider>
     </AssistantRuntimeProvider>
