@@ -24,7 +24,7 @@ export async function POST(req: Request) {
     system,
     tools: {
       ...frontendTools(tools),
-      // ollama doesn't render
+      // ollama doesn't render tools
       weather: {
         description: "Get weather information",
         parameters: z.object({
